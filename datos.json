@@ -1,0 +1,283 @@
+{
+  "wisc_v": {
+    "subprueba_digitos": {
+      "orden_directo": [
+        {
+          "item": "1",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [2, 9], "respuesta_correcta": [2, 9] },
+            { "intento": 2, "estimulo": [5, 4], "respuesta_correcta": [5, 4] }
+          ]
+        },
+        {
+          "item": "2",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [3, 9, 6], "respuesta_correcta": [3, 9, 6] },
+            { "intento": 2, "estimulo": [6, 5, 2], "respuesta_correcta": [6, 5, 2] }
+          ]
+        },
+        {
+          "item": "3",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [5, 4, 1, 7], "respuesta_correcta": [5, 4, 1, 7] },
+            { "intento": 2, "estimulo": [9, 1, 6, 8], "respuesta_correcta": [9, 1, 6, 8] }
+          ]
+        },
+        {
+          "item": "4",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [8, 2, 1, 9, 6], "respuesta_correcta": [8, 2, 1, 9, 6] },
+            { "intento": 2, "estimulo": [7, 2, 3, 4, 9], "respuesta_correcta": [7, 2, 3, 4, 9] }
+          ]
+        },
+        {
+          "item": "5",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [5, 7, 3, 6, 4, 8], "respuesta_correcta": [5, 7, 3, 6, 4, 8] },
+            { "intento": 2, "estimulo": [3, 8, 4, 1, 7, 5], "respuesta_correcta": [3, 8, 4, 1, 7, 5] }
+          ]
+        },
+        {
+          "item": "6",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [2, 1, 8, 9, 4, 3, 7], "respuesta_correcta": [2, 1, 8, 9, 4, 3, 7] },
+            { "intento": 2, "estimulo": [7, 8, 5, 2, 1, 6, 3], "respuesta_correcta": [7, 8, 5, 2, 1, 6, 3] }
+          ]
+        },
+        {
+          "item": "7",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [1, 8, 4, 2, 7, 5, 3, 6], "respuesta_correcta": [1, 8, 4, 2, 7, 5, 3, 6] },
+            { "intento": 2, "estimulo": [2, 7, 9, 6, 3, 1, 4, 8], "respuesta_correcta": [2, 7, 9, 6, 3, 1, 4, 8] }
+          ]
+        },
+        {
+          "item": "8",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [7, 2, 6, 1, 9, 4, 8, 3, 5], "respuesta_correcta": [7, 2, 6, 1, 9, 4, 8, 3, 5] },
+            { "intento": 2, "estimulo": [4, 3, 8, 9, 1, 7, 5, 6, 2], "respuesta_correcta": [4, 3, 8, 9, 1, 7, 5, 6, 2] }
+          ]
+        },
+        {
+          "item": "9",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [6, 2, 5, 3, 1, 9, 8, 5, 4, 7], "respuesta_correcta": [6, 2, 5, 3, 1, 9, 8, 5, 4, 7] },
+            { "intento": 2, "estimulo": [9, 4, 3, 8, 7, 5, 2, 9, 6, 1], "respuesta_correcta": [9, 4, 3, 8, 7, 5, 2, 9, 6, 1] }
+          ]
+        }
+      ],
+      "orden_inverso": [
+        {
+          "item": "Ej",
+          "es_ejemplo": true,
+          "intentos": [
+            { "intento": 1, "estimulo": [9, 4], "respuesta_correcta": [4, 9] },
+            { "intento": 2, "estimulo": [5, 6], "respuesta_correcta": [6, 5] }
+          ]
+        },
+        {
+          "item": "1",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [2, 1], "respuesta_correcta": [1, 2] },
+            { "intento": 2, "estimulo": [1, 3], "respuesta_correcta": [3, 1] }
+          ]
+        },
+        {
+          "item": "2",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [3, 9], "respuesta_correcta": [9, 3] },
+            { "intento": 2, "estimulo": [8, 5], "respuesta_correcta": [5, 8] }
+          ]
+        },
+        {
+          "item": "3",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [2, 3, 6], "respuesta_correcta": [6, 3, 2] },
+            { "intento": 2, "estimulo": [5, 4, 1], "respuesta_correcta": [1, 4, 5] }
+          ]
+        },
+        {
+          "item": "4",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [4, 5, 8], "respuesta_correcta": [8, 5, 4] },
+            { "intento": 2, "estimulo": [2, 7, 5], "respuesta_correcta": [5, 7, 2] }
+          ]
+        },
+        {
+          "item": "5",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [7, 4, 5, 2], "respuesta_correcta": [2, 5, 4, 7] },
+            { "intento": 2, "estimulo": [9, 3, 8, 6], "respuesta_correcta": [6, 8, 3, 9] }
+          ]
+        },
+        {
+          "item": "6",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [2, 1, 7, 9, 4], "respuesta_correcta": [4, 9, 7, 1, 2] },
+            { "intento": 2, "estimulo": [5, 6, 3, 8, 7], "respuesta_correcta": [7, 8, 3, 6, 5] }
+          ]
+        },
+        {
+          "item": "7",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [1, 6, 4, 7, 5, 8], "respuesta_correcta": [8, 5, 7, 4, 6, 1] },
+            { "intento": 2, "estimulo": [6, 3, 7, 2, 9, 1], "respuesta_correcta": [1, 9, 2, 7, 3, 6] }
+          ]
+        },
+        {
+          "item": "8",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [8, 1, 5, 2, 4, 3, 6], "respuesta_correcta": [6, 3, 4, 2, 5, 1, 8] },
+            { "intento": 2, "estimulo": [4, 3, 7, 9, 2, 8, 1], "respuesta_correcta": [1, 8, 2, 9, 7, 3, 4] }
+          ]
+        },
+        {
+          "item": "9",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [3, 1, 7, 9, 4, 6, 8, 2], "respuesta_correcta": [2, 8, 6, 4, 9, 7, 1, 3] },
+            { "intento": 2, "estimulo": [9, 8, 1, 6, 3, 2, 4, 7], "respuesta_correcta": [7, 4, 2, 3, 6, 1, 8, 9] }
+          ]
+        }
+      ],
+      "orden_creciente": [
+        {
+          "item": "Ej. A",
+          "es_ejemplo": true,
+          "intentos": [
+            { "intento": 1, "estimulo": [3, 1], "respuesta_correcta": [1, 3] },
+            { "intento": 2, "estimulo": [8, 6], "respuesta_correcta": [6, 8] }
+          ]
+        },
+        {
+          "item": "Ej. B",
+          "es_ejemplo": true,
+          "intentos": [
+            { "intento": 1, "estimulo": [5, 2, 4], "respuesta_correcta": [2, 4, 5] },
+            { "intento": 2, "estimulo": [4, 3, 3], "respuesta_correcta": [3, 3, 4] }
+          ]
+        },
+        {
+          "item": "1",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [4, 1], "respuesta_correcta": [1, 4] },
+            { "intento": 2, "estimulo": [3, 2], "respuesta_correcta": [2, 3] }
+          ]
+        },
+        {
+          "item": "2",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [5, 2, 7], "respuesta_correcta": [2, 5, 7] },
+            { "intento": 2, "estimulo": [1, 8, 6], "respuesta_correcta": [1, 6, 8] }
+          ]
+        },
+        {
+          "item": "3",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [7, 5, 8, 1], "respuesta_correcta": [1, 5, 7, 8] },
+            { "intento": 2, "estimulo": [4, 2, 9, 3], "respuesta_correcta": [2, 3, 4, 9] }
+          ]
+        },
+        {
+          "item": "4",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [1, 5, 6, 2, 8], "respuesta_correcta": [1, 2, 5, 6, 8] },
+            { "intento": 2, "estimulo": [2, 8, 4, 7, 9], "respuesta_correcta": [2, 4, 7, 8, 9] }
+          ]
+        },
+        {
+          "item": "5",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [3, 3, 6, 1, 5], "respuesta_correcta": [1, 3, 3, 5, 6] },
+            { "intento": 2, "estimulo": [4, 9, 4, 6, 9], "respuesta_correcta": [4, 4, 6, 9, 9] }
+          ]
+        },
+        {
+          "item": "6",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [8, 5, 2, 5, 3, 7], "respuesta_correcta": [2, 3, 5, 5, 7, 8] },
+            { "intento": 2, "estimulo": [6, 1, 4, 7, 9, 3], "respuesta_correcta": [1, 3, 4, 6, 7, 9] }
+          ]
+        },
+        {
+          "item": "7",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [9, 7, 9, 6, 2, 6, 8], "respuesta_correcta": [2, 6, 6, 7, 8, 9, 9] },
+            { "intento": 2, "estimulo": [3, 1, 7, 5, 1, 8, 5], "respuesta_correcta": [1, 1, 3, 5, 5, 7, 8] }
+          ]
+        },
+        {
+          "item": "8",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [6, 9, 6, 2, 1, 3, 7, 9], "respuesta_correcta": [1, 2, 3, 6, 6, 7, 9, 9] },
+            { "intento": 2, "estimulo": [1, 4, 8, 5, 4, 8, 7, 4], "respuesta_correcta": [1, 4, 4, 4, 5, 7, 8, 8] }
+          ]
+        },
+        {
+          "item": "9",
+          "es_ejemplo": false,
+          "intentos": [
+            { "intento": 1, "estimulo": [2, 5, 7, 7, 4, 8, 7, 5, 2], "respuesta_correcta": [2, 2, 4, 5, 5, 7, 7, 7, 8] },
+            { "intento": 2, "estimulo": [9, 1, 8, 3, 6, 3, 9, 2, 6], "respuesta_correcta": [1, 2, 3, 3, 6, 6, 8, 9, 9] }
+          ]
+        }
+      ]
+    },
+    "subprueba_span_dibujos": [
+      { "item": "Ej. A", "es_ejemplo": true, "respuesta_correcta": ["B"] },
+      { "item": "1", "es_ejemplo": false, "respuesta_correcta": ["A"] },
+      { "item": "2", "es_ejemplo": false, "respuesta_correcta": ["C"] },
+      { "item": "3", "es_ejemplo": false, "respuesta_correcta": ["E"] },
+      { "item": "Ej. B", "es_ejemplo": true, "respuesta_correcta": ["B", "A"] },
+      { "item": "Ej. C", "es_ejemplo": true, "respuesta_correcta": ["D", "A"] },
+      { "item": "4", "es_ejemplo": false, "respuesta_correcta": ["C", "D"] },
+      { "item": "5", "es_ejemplo": false, "respuesta_correcta": ["B", "A"] },
+      { "item": "6", "es_ejemplo": false, "respuesta_correcta": ["A", "E"] },
+      { "item": "7", "es_ejemplo": false, "respuesta_correcta": ["F", "B"] },
+      { "item": "8", "es_ejemplo": false, "respuesta_correcta": ["A", "B", "E"] },
+      { "item": "9", "es_ejemplo": false, "respuesta_correcta": ["B", "E", "D"] },
+      { "item": "10", "es_ejemplo": false, "respuesta_correcta": ["D", "F", "C"] },
+      { "item": "11", "es_ejemplo": false, "respuesta_correcta": ["A", "F", "E"] },
+      { "item": "12", "es_ejemplo": false, "respuesta_correcta": ["F", "C", "B"] },
+      { "item": "13", "es_ejemplo": false, "respuesta_correcta": ["B", "H", "C"] },
+      { "item": "14", "es_ejemplo": false, "respuesta_correcta": ["A", "C", "E", "F"] },
+      { "item": "15", "es_ejemplo": false, "respuesta_correcta": ["B", "C", "F", "D"] },
+      { "item": "16", "es_ejemplo": false, "respuesta_correcta": ["G", "B", "D", "F"] },
+      { "item": "17", "es_ejemplo": false, "respuesta_correcta": ["G", "D", "B", "A"] },
+      { "item": "18", "es_ejemplo": false, "respuesta_correcta": ["C", "B", "I", "H"] },
+      { "item": "19", "es_ejemplo": false, "respuesta_correcta": ["D", "G", "A", "I"] },
+      { "item": "20", "es_ejemplo": false, "respuesta_correcta": ["E", "F", "H", "B", "A"] },
+      { "item": "21", "es_ejemplo": false, "respuesta_correcta": ["E", "G", "B", "C", "H"] },
+      { "item": "22", "es_ejemplo": false, "respuesta_correcta": ["F", "B", "I", "H", "D"] },
+      { "item": "23", "es_ejemplo": false, "respuesta_correcta": ["A", "C", "F", "H", "K", "E"] },
+      { "item": "24", "es_ejemplo": false, "respuesta_correcta": ["L", "B", "H", "I", "J", "D"] },
+      { "item": "25", "es_ejemplo": false, "respuesta_correcta": ["H", "B", "L", "G", "C", "E", "J"] },
+      { "item": "26", "es_ejemplo": false, "respuesta_correcta": ["G", "A", "K", "C", "F", "D", "I", "B"] }
+    ]
+  }
+}
