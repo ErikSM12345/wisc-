@@ -1,0 +1,98 @@
+Requisitos
+1. Interfaz
+
+Diseño moderno en modo oscuro.
+
+Pantalla principal con:
+
+Botón "Seleccionar PDF".
+Botón "Comenzar prueba".
+Pantalla completa.
+2. Voz
+
+
+Cuando el usuario pulse:
+
+▶ Dictar
+
+la aplicación leerá la secuencia de números con una pausa configurable entre cada uno.
+
+Ejemplo:
+
+1...
+
+9...
+
+8...
+
+5...
+
+3. Respuestas
+
+El examinador escribirá:
+
+1985
+
+y pulsará Enter.
+
+La aplicación registrará la respuesta sin mostrar si es correcta.
+
+4. Banco de imagenes
+
+Al comenzar, el usuario seleccionará una carpeta con imagenes jpg.
+
+La aplicación deberá:
+
+
+almacenarlas temporalmente,
+mostrarlas cuando corresponda.
+5. Segunda prueba
+
+Cada ítem mostrará una imagen.
+
+Habrá:
+
+Mostrar
+
+Ocultar
+
+Respuesta
+
+El examinador escribirá una cadena sin espacios.
+
+Ejemplo:
+
+ACEFG
+
+6. Corrección
+
+Las respuestas correctas estarán en un JSON.
+
+Cada ítem devolverá:
+
+2 puntos → secuencia idéntica
+
+1 punto → mismos elementos en orden diferente
+
+0 puntos → cualquier otro caso
+
+No mostrar la corrección hasta finalizar.
+
+7. Tablas
+
+Otro JSON contendrá las conversiones.
+
+La aplicación calculará automáticamente:
+
+puntuación directa
+puntuación escalar
+índice compuesto
+percentil
+intervalo de confianza
+
+9. Informe
+
+Exportar un PDF con:
+
+resultados
+puntuaciones
