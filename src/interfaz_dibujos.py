@@ -43,6 +43,9 @@ class VistaDibujos(ctk.CTkFrame):
             "puntuacion_directa_total": 0,
         }
 
+        # Cache de imágenes para optimización
+        self._image_cache: dict = {}
+
         # Referencia al temporizador activo (para poder cancelarlo)
         self._timer_id = None
         # Referencia a la CTkImage mostrada (evita recolección de basura)
@@ -116,9 +119,8 @@ class VistaDibujos(ctk.CTkFrame):
         )
         self.btn_mostrar.pack(pady=10)
 
-        # ── Área de imagen ──
+        # ── Área de imagen (no empaquetada hasta que tenga contenido) ──
         self.lbl_imagen = ctk.CTkLabel(self, text="")
-        self.lbl_imagen.pack(pady=5)
 
         # ── Campo de entrada (oculto al inicio) ──
         self.entrada_respuesta = ctk.CTkEntry(
@@ -152,19 +154,33 @@ class VistaDibujos(ctk.CTkFrame):
     # ──────────────────────────────────────────────────────────────────
 
     def _cargar_imagenes_desde_carpeta(self, carpeta_path) -> None:
-        """Carga y ordena alfabéticamente los archivos JPG/jpg de *carpeta_path*."""
+        """Carga y ordena alfabéticamente los archivos de imagen de *carpeta_path*."""
         carpeta = Path(carpeta_path)
         self.carpeta_imagenes = carpeta
         self.imagenes_ordenadas = []
+        self._image_cache.clear()
 
         if not carpeta.exists() or not carpeta.is_dir():
             return
 
-        extensiones = {".jpg", ".jpeg", ".JPG", ".JPEG"}
+        extensiones = {".jpg", ".jpeg", ".JPG", ".JPEG", ".png", ".PNG"}
         archivos = [
             f for f in sorted(carpeta.iterdir()) if f.suffix in extensiones
         ]
         self.imagenes_ordenadas = archivos
+
+        # Precargar TODAS las imágenes (estímulos y páginas de respuesta)
+        for idx_imagen, ruta in enumerate(self.imagenes_ordenadas):
+            try:
+                pil_img = Image.open(str(ruta))
+                ctk_img = ctk.CTkImage(
+                    light_image=pil_img,
+                    dark_image=pil_img,
+                    size=(500, 380),
+                )
+                self._image_cache[idx_imagen] = ctk_img
+            except Exception:
+                self._image_cache[idx_imagen] = None
 
     def _seleccionar_carpeta(self) -> None:
         """Abre un diálogo para elegir una carpeta de imágenes y recarga."""
@@ -212,11 +228,17 @@ class VistaDibujos(ctk.CTkFrame):
             text=f"Progreso: {self.indice_actual + 1} de {len(self.items)}"
         )
 
-        # Resetear widgets
-        self.lbl_imagen.configure(image=None, text="")
-        self._ctk_image_ref = None
+        # ── Resetear widgets en orden correcto ──
+        # Quitar todos los widgets dinámicos del layout
+        self.btn_mostrar.pack_forget()
+        self.lbl_imagen.pack_forget()
         self.entrada_respuesta.pack_forget()
         self.btn_siguiente.pack_forget()
+
+        # NO establecemos image=None porque CustomTkinter tiene un bug que rompe el label
+        self.lbl_imagen.configure(text="")
+
+        # Re-empaquetar solo el botón (en el orden correcto)
         self.btn_mostrar.configure(state="normal")
         self.btn_mostrar.pack(pady=10)
 
@@ -224,50 +246,86 @@ class VistaDibujos(ctk.CTkFrame):
         """Muestra la imagen-estímulo del ítem actual durante 5 000 ms."""
 
         self.btn_mostrar.configure(state="disabled")
+        self.btn_mostrar.pack_forget()
 
-        # Ocultar entrada mientras se muestra la imagen
-        self.entrada_respuesta.pack_forget()
-        self.btn_siguiente.pack_forget()
-
-        # Intentar cargar la imagen correspondiente
+        # Intentar cargar la imagen correspondiente desde el caché
         idx_imagen = 2 * self.indice_actual  # pares: estímulo
         if idx_imagen < len(self.imagenes_ordenadas):
-            ruta_img = self.imagenes_ordenadas[idx_imagen]
-            try:
-                pil_img = Image.open(ruta_img)
-                ctk_img = ctk.CTkImage(
-                    light_image=pil_img,
-                    dark_image=pil_img,
-                    size=(500, 380),
-                )
+            ctk_img = self._image_cache.get(idx_imagen)
+            if ctk_img is not None:
                 self._ctk_image_ref = ctk_img
                 self.lbl_imagen.configure(image=ctk_img, text="")
-            except Exception:
+            else:
+                # Fallback si no pudo cargarse en memoria
                 self.lbl_imagen.configure(
-                    image=None,
+                    image="",  # Usar string vacío en vez de None
                     text="[Imagen no disponible]",
                     text_color="gray60",
                 )
                 self._ctk_image_ref = None
         else:
-            self.lbl_imagen.configure(
-                image=None,
-                text="[Sin imagen para este ítem]",
-                text_color="gray60",
-            )
-            self._ctk_image_ref = None
+            # Si solo hay 1 imagen dummy, mostrar esa siempre en caso de error, o usar fallback
+            if len(self.imagenes_ordenadas) == 1 and 0 in self._image_cache:
+                ctk_img = self._image_cache[0]
+                if ctk_img is not None:
+                    self._ctk_image_ref = ctk_img
+                    self.lbl_imagen.configure(image=ctk_img, text="")
+                else:
+                    self.lbl_imagen.configure(
+                        image="",
+                        text="[Sin imagen para este ítem]",
+                        text_color="gray60",
+                    )
+                    self._ctk_image_ref = None
+            else:
+                self.lbl_imagen.configure(
+                    image="",
+                    text="[Sin imagen para este ítem]",
+                    text_color="gray60",
+                )
+                self._ctk_image_ref = None
 
-        # Programar ocultación a los 5 s
-        self._timer_id = self.after(5000, self._ocultar_imagen)
+        # Empaquetar la imagen AHORA que tiene contenido
+        self.lbl_imagen.pack(pady=5)
+        self.update_idletasks()
 
-    def _ocultar_imagen(self) -> None:
-        """Oculta la imagen y muestra el campo de entrada."""
+        # Programar cambio a la página de respuestas a los 5 s
+        self._timer_id = self.after(5000, self._mostrar_pagina_respuesta)
+
+    def _mostrar_pagina_respuesta(self) -> None:
+        """Cambia la imagen al cuadernillo de respuestas y muestra el campo de entrada."""
         self._timer_id = None
-        self.lbl_imagen.configure(image=None, text="")
-        self._ctk_image_ref = None
+
+        # Intentar cargar la imagen de respuesta (impar)
+        idx_imagen_respuesta = 2 * self.indice_actual + 1
+        if idx_imagen_respuesta < len(self.imagenes_ordenadas):
+            ctk_img = self._image_cache.get(idx_imagen_respuesta)
+            if ctk_img is not None:
+                self._ctk_image_ref = ctk_img
+                self.lbl_imagen.configure(image=ctk_img, text="")
+            else:
+                self.lbl_imagen.configure(
+                    image="",
+                    text="[Imagen de respuesta no disponible]",
+                    text_color="gray60",
+                )
+                self._ctk_image_ref = None
+        else:
+            # Fallback en caso de usar la imagen dummy única
+            if len(self.imagenes_ordenadas) == 1 and 0 in self._image_cache:
+                ctk_img = self._image_cache[0]
+                if ctk_img is not None:
+                    self._ctk_image_ref = ctk_img
+                    self.lbl_imagen.configure(image=ctk_img, text="")
+            else:
+                self.lbl_imagen.configure(
+                    image="",
+                    text="[Sin imagen de respuesta]",
+                    text_color="gray60",
+                )
+                self._ctk_image_ref = None
 
         # Mostrar entrada y botón siguiente
-        self.btn_mostrar.pack_forget()
         self.entrada_respuesta.delete(0, "end")
         self.entrada_respuesta.pack(pady=10)
         self.btn_siguiente.pack(pady=5)
@@ -275,6 +333,7 @@ class VistaDibujos(ctk.CTkFrame):
         # Foco automático y bind de Enter
         self.entrada_respuesta.focus()
         self.entrada_respuesta.bind("<Return>", lambda e: self._registrar_respuesta())
+
 
     def _registrar_respuesta(self) -> None:
         """Lee la respuesta, puntúa y avanza al siguiente ítem."""
@@ -319,8 +378,7 @@ class VistaDibujos(ctk.CTkFrame):
         self.btn_mostrar.pack_forget()
         self.entrada_respuesta.pack_forget()
         self.btn_siguiente.pack_forget()
-        self.lbl_imagen.configure(image=None, text="")
-        self._ctk_image_ref = None
+        self.lbl_imagen.pack_forget()
 
         total = self.resultados["puntuacion_directa_total"]
         self.lbl_item_info.configure(
